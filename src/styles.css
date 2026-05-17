@@ -1,0 +1,318 @@
+/* ===== Animated Gradient Background ===== */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(139, 92, 246, 0); }
+}
+
+@keyframes checkPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* ===== Base & Body ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #533483, #e94560, #0f3460, #16213e, #1a1a2e);
+  background-size: 400% 400%;
+  animation: gradientShift 14s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem 4rem;
+  color: #f1f5f9;
+}
+
+/* ===== Header ===== */
+.header {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin: 1.8rem 0 1.4rem;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(139, 92, 246, 0.6);
+  animation: fadeInDown 0.6s ease both;
+}
+
+/* ===== Form Card ===== */
+.new-item-form {
+  width: 100%;
+  max-width: 540px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 1.75rem 2rem;
+  animation: fadeInDown 0.5s ease both;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.new-item-form:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+/* ===== Form Row ===== */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.form-row label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-row input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.form-row input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.form-row input[type="text"]:focus {
+  border-color: rgba(139, 92, 246, 0.8);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+}
+
+/* ===== Add Button ===== */
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.25s ease;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+  animation: none;
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+/* ===== Todo List Container ===== */
+.list {
+  width: 100%;
+  max-width: 540px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: fadeInUp 0.6s ease 0.15s both;
+}
+
+/* ===== Todo Item ===== */
+.list li,
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.9rem 1.1rem;
+  animation: slideInLeft 0.35s ease both;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.list li:hover,
+.item:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== Checkbox ===== */
+.list li input[type="checkbox"],
+.item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 6px;
+  border: 2px solid rgba(139, 92, 246, 0.7);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.list li input[type="checkbox"]:checked,
+.item input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  border-color: transparent;
+  animation: checkPop 0.3s ease;
+}
+
+.list li input[type="checkbox"]:checked::after,
+.item input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.list li input[type="checkbox"]:hover,
+.item input[type="checkbox"]:hover {
+  border-color: #8b5cf6;
+  transform: scale(1.1);
+}
+
+/* ===== Todo Label ===== */
+.list li label,
+.item label {
+  flex: 1;
+  font-size: 0.97rem;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: color 0.2s, text-decoration 0.2s;
+  line-height: 1.4;
+}
+
+.list li.completed label,
+.item.completed label {
+  color: rgba(255, 255, 255, 0.38);
+  text-decoration: line-through;
+}
+
+/* ===== Delete Button ===== */
+.btn.btn-danger,
+button.btn-danger,
+.item > button {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.12);
+  color: rgba(255, 100, 100, 0.9);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s, border-color 0.2s;
+  white-space: nowrap;
+  animation: none;
+}
+
+.btn.btn-danger:hover,
+button.btn-danger:hover,
+.item > button:hover {
+  background: rgba(239, 68, 68, 0.28);
+  color: #fff;
+  border-color: rgba(239, 68, 68, 0.75);
+  transform: scale(1.05);
+}
+
+.btn.btn-danger:active,
+button.btn-danger:active,
+.item > button:active {
+  transform: scale(0.97);
+}
+
+/* ===== Empty State ===== */
+.list:empty::after {
+  content: "No tasks yet — add one above!";
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.95rem;
+  padding: 2rem;
+  display: block;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 99px;
+}
